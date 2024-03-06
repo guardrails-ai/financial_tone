@@ -1,4 +1,4 @@
-from typing import Any, Callable, Dict, Optional, Tuple
+from typing import Any, Callable, Dict, Optional, Tuple, cast
 
 from guardrails.validator_base import (
     FailResult,
@@ -58,9 +58,10 @@ class FinancialTone(Validator):
             raise RuntimeError("Failed to get model prediction.")
 
         pred_label, confidence = result[0]["label"], result[0]["score"]  # type: ignore
+        pred_label = cast(str, pred_label)
+
         assert pred_label in ["Positive", "Negative", "Neutral"]
         print(f"Predicted label: {pred_label}, Confidence: {confidence}")
-
         if pred_label.lower() == financial_tone and confidence > threshold:
             return True
         return False
