@@ -4,7 +4,7 @@
 | --- | --- |
 | Date of development | Feb 14, 2024 |
 | Validator type | Format |
-| Blog |  |
+| Blog | - |
 | License | Apache 2 |
 | Input/Output | Output |
 
@@ -13,12 +13,12 @@
 This validator checks an LLM-generated output (in a financial context) for a particular tone.
 
 ## Requirements
-- Dependencies: `nltk`, `transformers`
+* Dependencies: `transformers`, `torch`
 
 ## Installation
 
 ```bash
-$ guardrails hub install hub://guardrails/financial-tone
+guardrails hub install hub://cartesia/financial_tone
 ```
 
 ## Usage Examples
@@ -60,7 +60,7 @@ Initializes a new instance of the Validator class.
 
 <br>
 
-**`__call__(self, value, metadata={}) → ValidationOutcome`**
+**`__call__(self, value, metadata={}) → ValidationResult`**
 
 <ul>
 
