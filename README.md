@@ -1,6 +1,6 @@
 ## Overview
 
-| Developed by | Cartesia |
+| Developed by | Cartesia AI|
 | --- | --- |
 | Date of development | Feb 14, 2024 |
 | Validator type | Format |
@@ -25,24 +25,30 @@ guardrails hub install hub://cartesia/financial_tone
 
 ### Validating string output via Python
 
-In this example, we use the `financial-tone` validator on any LLM generated text.
+In this example, we use the `financial_tone` validator on any LLM generated text.
 
 ```python
 # Import Guard and Validator
 from guardrails.hub import FinancialTone
 from guardrails import Guard
 
-# Initialize Validator
-val = FinancialTone()
-val.validate(
-    "This is an exciting opportunity to invest.", 
-    metadata={"financial_tone": "positive", "financial_tone_threshold": 0.95},
-)  # Pass
+# Use the Guard with the validator
+guard = Guard().use(FinancialTone, on_fail="exception")
 
-val.validate(
-    "This is going to the floor in the next 3 months.", 
-    metadata={"financial_tone": "positive", "financial_tone_threshold": 0.95},
-)  # Fail
+# Test passing response
+guard.validate(
+    "Growth is strong and we have plenty of liquidity.",
+    metadata={"financial_tone": "positive"}
+)
+
+try:
+    # Test failing response
+    guard.validate(
+        "There are doubts about our finances, and we are struggling to stay afloat.",
+        metadata={"financial_tone": "positive"}
+    )
+except Exception as e:
+    print(e)
 ```
 
 ## API Reference
@@ -74,6 +80,11 @@ Note:
 **Parameters:**
 
 - **`value`** *(Any):* The input value to validate.
-- **`metadata`** *(dict):* A dictionary containing metadata required for validation. Optionally pass in keys `financial_tone` and `financial_tone_threshold` to customize the validation process. Options for `financial_tone` include `positive`, `negative`, `neutral`. Options for `financial_tone_threshold` include a float value between 0 and 1.
+- **`metadata`** *(dict):* A dictionary containing metadata required for validation.
+
+| Key | Type | Description | Default | Required |
+| --- | --- | --- | --- | --- |
+| `financial_tone` | string | One of `positive`, `negative`, `neutral`| `neutral` | No |
+| `financial_tone_threshold` | float | A float value between 0 and 1 | `0.8` | No |
 
 </ul>
