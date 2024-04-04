@@ -78,7 +78,7 @@ class FinancialTone(Validator):
             metadata.get("financial_tone_threshold", self.DEFAULT_THRESHOLD)
         )
 
-    def validate(self, value: str, metadata: Dict[str, Any]) -> ValidationResult:
+    def validate(self, value: str, metadata: Dict[str, Any] = {}) -> ValidationResult:
         """Validate that the generated text has a certain financial tone."""
         financial_tone, threshold = self._unpack_metadata(metadata)
         if not self.has_correct_financial_tone(value, financial_tone, threshold):
