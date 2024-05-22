@@ -1,24 +1,28 @@
 ## Overview
 
 | Developed by | Cartesia AI|
-| --- | --- |
 | Date of development | Feb 14, 2024 |
 | Validator type | Format |
-| Blog | - |
+| Blog |  |
 | License | Apache 2 |
 | Input/Output | Output |
 
 ## Description
 
+### Intended Use 
 This validator checks an LLM-generated output (in a financial context) for a particular tone.
 
-## Requirements
-* Dependencies: `transformers`, `torch`
+### Requirements
+
+* Dependencies: 
+    - `transformers` 
+    - `torch`
+    - guardrails-ai>=0.4.0
 
 ## Installation
 
 ```bash
-guardrails hub install hub://cartesia/financial_tone
+$guardrails hub install hub://cartesia/financial_tone
 ```
 
 ## Usage Examples
@@ -51,7 +55,7 @@ except Exception as e:
     print(e)
 ```
 
-## API Reference
+# API Reference
 
 **`__init__(self, on_fail="noop")`**
 <ul>
