@@ -15,7 +15,7 @@ This validator checks an LLM-generated output (in a financial context) for a par
 ### Requirements
 
 * Dependencies: 
-    - `transformers` 
+    - `transformers`
     - `torch`
     - guardrails-ai>=0.4.0
 
