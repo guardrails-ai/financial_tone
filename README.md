@@ -22,7 +22,7 @@ This validator checks an LLM-generated output (in a financial context) for a par
 ## Installation
 
 ```bash
-$guardrails hub install hub://cartesia/financial_tone
+$ guardrails hub install hub://cartesia/financial_tone
 ```
 
 ## Usage Examples
