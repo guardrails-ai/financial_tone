@@ -54,7 +54,6 @@ except Exception as e:
 ## API Reference
 
 **`__init__(self, on_fail="noop")`**
-<ul>
 
 Initializes a new instance of the Validator class.
 
@@ -62,13 +61,11 @@ Initializes a new instance of the Validator class.
 
 - **`on_fail`** *(str, Callable):* The policy to enact when a validator fails. If `str`, must be one of `reask`, `fix`, `filter`, `refrain`, `noop`, `exception` or `fix_reask`. Otherwise, must be a function that is called when the validator fails.
 
-</ul>
 
-<br/>
 
 **`__call__(self, value, metadata={}) → ValidationResult`**
 
-<ul>
+
 
 Validates the given `value` using the rules defined in this validator, relying on the `metadata` provided to customize the validation process. This method is automatically invoked by `guard.parse(...)`, ensuring the validation logic is applied to the input data.
 
@@ -87,4 +84,4 @@ Note:
 | `financial_tone` | string | One of `positive`, `negative`, `neutral`| `neutral` | No |
 | `financial_tone_threshold` | float | A float value between 0 and 1 | `0.8` | No |
 
-</ul>
+
